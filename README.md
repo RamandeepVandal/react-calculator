@@ -1,4 +1,4 @@
-# How to install and run the application
+# Install and Run
 
 ### Run the following commands
 
