@@ -1,0 +1,24 @@
+.num-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: #C5FAD5;
+    color: black;
+    font-weight: bold;
+    outline: 1px solid #333;
+    transition: 0.25s ease;
+    border-radius: 0.20em;
+}
+
+.operator-btn {
+    background-color: #AA96DA;
+    color: black;
+    outline: 1px solid #333;
+}
+
+.num-btn:hover {
+   transform: scale(1.15);
+}
