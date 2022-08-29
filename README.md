@@ -1,4 +1,9 @@
-Installation Steps:
+# Install and Run
 
-1: Run npm install calculator
-2: Run npm start
+### Run the following commands
+
+1. npm install 
+
+2. cd calculator
+
+3. npm start
