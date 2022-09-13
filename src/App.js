@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
 import * as math from 'mathjs';
 
@@ -7,75 +7,67 @@ import { Buttons } from './components/Buttons';
 import { Input } from './components/Input';
 import { ClearEntry } from './components/ClearEntry';
 
-class App extends Component {
+function App() {
 
   // input state
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      input: ""
-    }
-  }
+  let [input, setInput] = useState("");
 
   // concatenate string -> input -> create an expression
-  concatInput = (x) => {
-    this.setState({ input: this.state.input + x });
+  const concatInput = (x) => {
+    setInput(input = input + x);
   }
 
   // evaluate the expression
-  evaluateExpression = () => {
-    this.setState({ input: math.evaluate(this.state.input) });
+  const evaluateExpression = () => {
+    setInput(input = math.evaluate(input));
   }
 
   // clear the input
-  clearInput = () => {
-    this.setState({ input: "" });
+  const clearInput = () => {
+    setInput(input = "");
   }
 
-  // delete the input
-  deleteInput = () => {
-    this.setState({ input: this.state.input.substring(0, this.state.input.length - 1)});
+  // delete the input -> by 1 character
+  const deleteInput = () => {
+    setInput(input.substring(0, input.length - 1));
   }
 
-  render() {
     return (
       <div className="App">
-        <div class="calculator-wrapper">
+        <div className="calculator-wrapper">
           <h1>Calculator</h1>
-          <Input>{this.state.input}</Input>
-          <div class="row">
-            <Buttons handleClick={this.concatInput}>7</Buttons>
-            <Buttons handleClick={this.concatInput}>8</Buttons>
-            <Buttons handleClick={this.concatInput}>9</Buttons>
-            <Buttons handleClick={this.concatInput}>/</Buttons>
+          <Input>{input}</Input>
+          <div className="row">
+            <Buttons handleClick={concatInput}>7</Buttons>
+            <Buttons handleClick={concatInput}>8</Buttons>
+            <Buttons handleClick={concatInput}>9</Buttons>
+            <Buttons handleClick={concatInput}>/</Buttons>
           </div>
-          <div class="row">
-            <Buttons handleClick={this.concatInput}>4</Buttons>
-            <Buttons handleClick={this.concatInput}>5</Buttons>
-            <Buttons handleClick={this.concatInput}>6</Buttons>
-            <Buttons handleClick={this.concatInput}>*</Buttons>
+          <div className="row">
+            <Buttons handleClick={concatInput}>4</Buttons>
+            <Buttons handleClick={concatInput}>5</Buttons>
+            <Buttons handleClick={concatInput}>6</Buttons>
+            <Buttons handleClick={concatInput}>*</Buttons>
           </div>
-          <div class="row">
-            <Buttons handleClick={this.concatInput}>1</Buttons>
-            <Buttons handleClick={this.concatInput}>2</Buttons>
-            <Buttons handleClick={this.concatInput}>3</Buttons>
-            <Buttons handleClick={this.concatInput}>-</Buttons>
+          <div className="row">
+            <Buttons handleClick={concatInput}>1</Buttons>
+            <Buttons handleClick={concatInput}>2</Buttons>
+            <Buttons handleClick={concatInput}>3</Buttons>
+            <Buttons handleClick={concatInput}>-</Buttons>
           </div>
-          <div class="row">
-            <Buttons handleClick={this.concatInput}>0</Buttons>
-            <Buttons handleClick={this.concatInput}>.</Buttons>
-            <Buttons handleClick={() => this.evaluateExpression()}>=</Buttons>
-            <Buttons handleClick={this.concatInput}>+</Buttons>
+          <div className="row">
+            <Buttons handleClick={concatInput}>0</Buttons>
+            <Buttons handleClick={concatInput}>.</Buttons>
+            <Buttons handleClick={() => evaluateExpression()}>=</Buttons>
+            <Buttons handleClick={concatInput}>+</Buttons>
           </div>
-          <div class="row">
-            <ClearEntry handleClear={() => this.clearInput()}>Clear</ClearEntry>
-            <Buttons handleClick={() => this.deleteInput()}>Del</Buttons>
+          <div className="row">
+            <ClearEntry handleClear={() => clearInput()}>Clear</ClearEntry>
+            <Buttons handleClick={() => deleteInput()}>Del</Buttons>
           </div>
         </div>
       </div>
     );
   }
-}
 
 export default App;
