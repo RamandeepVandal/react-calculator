@@ -2,8 +2,8 @@
 
 ### Run the following commands
 
-1. npm install 
+1. cd calculator
 
-2. cd calculator
+2. npm install 
 
 3. npm start
