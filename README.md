@@ -1,6 +1,6 @@
-# Install and Run
+# Simple react calculator, that can perform simple arithmetic operations.
 
-### Run the following commands
+## How to start the application: 
 
 1. cd calculator
 
